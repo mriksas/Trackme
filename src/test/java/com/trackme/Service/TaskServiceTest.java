@@ -28,7 +28,7 @@ public class TaskServiceTest {
     private TaskMapper taskMapper;
 
     @Test
-    void testAddTask()
+    void shouldAddTask()
     {
         // given
         CreateTaskRequest request = new CreateTaskRequest("Test name", "Test", null,null,null);
