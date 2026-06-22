@@ -31,6 +31,9 @@ public class TaskService {
     // deleting by id feature
     public void deleteById(Long id)
     {
-        taskRepository.deleteById(id);
+        if(taskRepository.existsById(id))
+        {
+            taskRepository.deleteById(id);
+        }
     }
 }
