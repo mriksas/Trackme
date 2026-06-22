@@ -1,7 +1,10 @@
 package com.trackme.Service;
 
 import com.trackme.Dto.CreateTaskRequest;
+import com.trackme.Dto.TaskResponse;
 import com.trackme.Entity.Task;
+import com.trackme.Enums.Priority;
+import com.trackme.Enums.Status;
 import com.trackme.Interface.TaskMapper;
 import com.trackme.Repository.TaskRepository;
 import org.junit.jupiter.api.Test;
@@ -10,6 +13,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -49,4 +54,20 @@ public class TaskServiceTest {
 
     }
 
+    @Test
+    void shouldGetAllTasks()
+    {
+        List<Task> tasks = List.of(new Task());
+        List<TaskResponse> responses = List.of(new TaskResponse(1L,"", "",null, null, Priority.HIGH, Status.TODO));
+        when(taskRepository.findAll()).thenReturn(tasks);
+        when(taskMapper.toResponseList(tasks)).thenReturn(responses);
+
+        //when
+        var listOfTasks = taskService.getAllTasks();
+
+        // then
+        assertNotNull(listOfTasks);
+        verify(taskRepository, times(1)).findAll();
+
+    }
 }
