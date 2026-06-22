@@ -3,6 +3,7 @@ package com.trackme.Dto;
 import com.trackme.Enums.Priority;
 import com.trackme.Enums.Status;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;

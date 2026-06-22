@@ -1,6 +1,7 @@
 package com.trackme.Service;
 
 import com.trackme.Dto.CreateTaskRequest;
+import com.trackme.Dto.TaskResponse;
 import com.trackme.Entity.Task;
 import com.trackme.Interface.TaskMapper;
 import com.trackme.Repository.TaskRepository;
@@ -21,9 +22,10 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public List<Task> getAllTasks()
+    //getting all tasks from db
+    public List<TaskResponse> getAllTasks()
     {
-        return taskRepository.findAll();
+        return taskMapper.toResponseList(taskRepository.findAll());
     }
 
 }
