@@ -28,4 +28,9 @@ public class TaskService {
         return taskMapper.toResponseList(taskRepository.findAll());
     }
 
+    // deleting by id feature
+    public void deleteById(Long id)
+    {
+        taskRepository.deleteById(id);
+    }
 }
