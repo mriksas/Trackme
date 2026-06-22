@@ -1,6 +1,7 @@
 package com.trackme.Controller;
 
 import com.trackme.Dto.CreateTaskRequest;
+import com.trackme.Dto.TaskResponse;
 import com.trackme.Entity.Task;
 import com.trackme.Service.TaskService;
 import lombok.AllArgsConstructor;
@@ -20,4 +21,9 @@ public class TaskController {
         return taskService.saveTask(createTaskRequest);
     }
 
+    @GetMapping
+    public List<TaskResponse> getAllTasks()
+    {
+        return taskService.getAllTasks();
+    }
 }
