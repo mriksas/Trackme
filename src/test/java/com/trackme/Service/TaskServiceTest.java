@@ -70,4 +70,19 @@ public class TaskServiceTest {
         verify(taskRepository, times(1)).findAll();
 
     }
+
+    @Test
+    void shouldDeleteTaskById()
+    {
+        Long id = 1L;
+        when(taskRepository.existsById(id)).thenReturn(true);
+
+        // when
+        taskService.deleteById(id);
+
+        // then
+        verify(taskRepository).existsById(id);
+        verify(taskRepository).existsById(id);
+
+    }
 }
